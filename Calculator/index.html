@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <section class="windows">
+        <i class="fa-solid fa-calculator"></i>
+        <span>Calculator</span>
+        <div class="button-group-windows">
+          <button class="fa-solid fa-minus"></button>
+          <button class="fa-regular fa-square"></button>
+          <button class="close fa-regular fa-x"></button>
+        </div>
+      </section>
+      <section class="section-top">
+        <button class="btn-menu" id="menu-button" onclick="toggleMenu()">
+          <div class="triline">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </button>
+        <span id="calc-type">Standard</span>
+        <button class="btn-history fa-solid fa-clock-rotate-left"></button>
+      </section>
+      <section class="section-calculations">
+        <div class="previous-numbers" id="previous-numbers"></div>
+        <div class="current-numbers" id="current-numbers">0</div>
+      </section>
+      <section class="memory-buttons">
+        <button>MC</button>
+        <button>MR</button>
+        <button class="active">M+</button>
+        <button class="active">M-</button>
+        <button class="active">MS</button>
+        <button>M<i class="fa-solid fa-angle-down"></i></button>
+      </section>
+      <section class="calc-buttons">
+        <button class="btn-operation" id="ops-percent">%</button>
+        <button class="btn-operation" id="ops-clear-entry" onclick="clearEntry()">CE</button>
+        <button class="btn-operation" id="ops-clear" onclick="clearAll()">C</button>
+        <button class="btn-operation" id="ops-delete" onclick="deleteLast()">
+          <i class="fa-solid fa-delete-left"></i>
+        </button>
+        <button class="btn-operation" id="ops-inverse">1⁄x</button>
+        <button class="btn-operation" id="ops-square">x²</button>
+        <button class="btn-operation" id="ops-square-root">²√x</button>
+        <button class="btn-operation" id="ops-divide" onclick="divideNumber()">
+          <i class="fa-solid fa-divide"></i>
+        </button>
+        <button class="btn-number" id="number-7" onclick="getNumber(this.id)">7</button>
+        <button class="btn-number" id="number-8" onclick="getNumber(this.id)">8</button>
+        <button class="btn-number" id="number-9" onclick="getNumber(this.id)">9</button>
+        <button class="btn-operation" id="ops-multiply" onclick="multiplyNumber()"><i class="fa-solid fa-x"></i></button>
+        <button class="btn-number" id="number-4" onclick="getNumber(this.id)">4</button>
+        <button class="btn-number" id="number-5" onclick="getNumber(this.id)">5</button>
+        <button class="btn-number" id="number-6" onclick="getNumber(this.id)">6</button>
+        <button class="btn-operation" id="ops-substract" onclick="substractNumber()"><i class="fa-solid fa-minus"></i></button>
+        <button class="btn-number" id="number-1" onclick="getNumber(this.id)">1</button>
+        <button class="btn-number" id="number-2" onclick="getNumber(this.id)">2</button>
+        <button class="btn-number" id="number-3" onclick="getNumber(this.id)">3</button>
+        <button class="btn-operation" id="ops-add" onclick="addNumber()"><i class="fa-solid fa-plus"></i></button>
+        <button class="btn-number" id="ops-plus-minus">+⁄-</button>
+        <button class="btn-number" id="number-0" onclick="getNumber(this.id)">0</button>
+        <button class="btn-number" id="number-comma" onclick="writeComma()">,</button>
+        <button class="btn-equal" id="ops-equal" onclick="equalButton()"><i class="fa-solid fa-equals"></i></button>
+      </section>
+    </div>
+    <div class="menu" id="menu">
+      <button class="btn-menu" id="menu-button" onclick="toggleMenu()">
+        <div class="triline">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </button>
+      <div class="menu-inner">
+        <section class="calc-options">
+          <span class="calc-options-text">Calculator</span>
+          <button class="active">
+            <i class="fa-solid fa-calculator"></i>
+            <span>Standard</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-flask"></i>
+            <span>Scientific</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Graphing</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-code"></i>
+            <span>Programmer</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Date calculation</span>
+          </button>
+        </section>
+        <section class="calc-options">
+          <span class="calc-options-text">Converter</span>
+          <button>
+            <i class="fa-solid fa-coins"></i>
+            <span>Currency</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-cube"></i>
+            <span>Volume</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-ruler-vertical"></i>
+            <span>Length</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-weight-hanging"></i>
+            <span>Weight and mass</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-temperature-half"></i>
+            <span>Temperature</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-fire"></i>
+            <span>Energy</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-table-cells"></i>
+            <span>Area</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-person-running"></i>
+            <span>Speed</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-clock"></i>
+            <span>Time</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-bolt-lightning"></i>
+            <span>Power</span>
+          </button>
+          <button>
+            <i class="fa-regular fa-floppy-disk"></i>
+            <span>Data</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Pressure</span>
+          </button>
+          <button>
+            <img class="angle-icon" src="assets/Icons/angle icon.svg" />
+            <span>Angle</span>
+          </button>
+        </section>
+      </div>
+      <section class="section-settings">
+        <button>
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </button>
+      </section>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+  </body>
+</html>
